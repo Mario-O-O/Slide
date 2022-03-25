@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slides</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    
+  <!-- Slide-1 -->
+  <div id="slider1" class="slider">
+    <div class="wrapper">
+      <div class="slides">
+        <div class="slide">
+          Slide 1
+        </div>
+        <div class="slide">
+          Slide 2
+        </div>
+        <div class="slide">
+          Slide 3
+        </div>
+        <div class="slide">
+          Slide 4
+        </div>
+        <div class="slide">
+          Slide 5
+        </div>
+      </div>
+    </div>
+    <a class="prev control"></a>
+    <a class="next control"></a>
+  </div>
+  <!-- End-Slide-1 -->
+
+  <br>
+  <br>
+  <br>
+
+  <!-- Slide-2 -->
+  <div id="slider2" class="slider">
+    <div class="wrapper">
+      <div class="slides">
+        <div class="slide">
+          Slide 1
+        </div>
+        <div class="slide">
+          Slide 2
+        </div>
+        <div class="slide">
+          Slide 3
+        </div>
+        <div class="slide">
+          Slide 4
+        </div>
+      </div>
+    </div>
+    <a class="prev control"></a>
+    <a class="next control"></a>
+  </div>
+  <!-- End-Slide-2 -->
+
+  <br>
+  <br>
+  <br>
+
+  <!-- Slide-3 -->
+  <div id="slider3" class="slider">
+    <div class="wrapper">
+      <div class="slides">
+        <div class="slide">
+          Slide 1
+        </div>
+        <div class="slide">
+          Slide 2
+        </div>
+        <div class="slide">
+          Slide 3
+        </div>
+        <div class="slide">
+          Slide 4
+        </div>
+      </div>
+    </div>
+    <a class="prev control"></a>
+    <a class="next control"></a>
+  </div>
+  <!-- End-Slide-3 -->
+
+  <br>
+  <br>
+  <br>
+
+  <!-- Slide-4 -->
+  <div id="slider4" class="slider">
+    <div class="wrapper">
+      <div class="slides">
+        <div class="slide">
+          Slide 1
+        </div>
+        <div class="slide">
+          Slide 2
+        </div>
+        <div class="slide">
+          Slide 3
+        </div>
+        <div class="slide">
+          Slide 4
+        </div>
+      </div>
+    </div>
+    <a class="prev control"></a>
+    <a class="next control"></a>
+  </div>
+  <!-- End-Slide-4 -->
+
+<script src="scripts.js"></script>
+
+<script>
+  const mis_slides = [
+  // Slide-1
+  {
+    id_sliders: "slider1",
+    num_sliders: 3,
+    animacion: false,
+    tiempo_slide: 5000,
+    velocidad_slide: .6
+  },
+  // Slide-2
+  {
+    id_sliders: "slider2",
+    num_sliders: 2,
+    animacion: false,
+    tiempo_slide: 5000,
+    velocidad_slide: .6
+  },
+  // Slide-3
+  {
+    id_sliders: "slider3",
+    num_sliders: null,
+    animacion: null,
+    tiempo_slide: null,
+    velocidad_slide: 1
+  },
+  // Slide-4
+  {
+    id_sliders: "slider4",
+    num_sliders: 4,
+    animacion: false,
+    tiempo_slide: null,
+    velocidad_slide: null
+  },
+]
+
+mis_slides.forEach(e => { new Sliders(e).slideOn() });
+</script>
+
+  </body>
+</html>
