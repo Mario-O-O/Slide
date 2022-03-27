@@ -31,6 +31,7 @@
     </div>
     <a class="prev control"></a>
     <a class="next control"></a>
+    <div class="dots"></div>
   </div>
   <!-- End-Slide-1 -->
 
@@ -51,13 +52,11 @@
         <div class="slide">
           Slide 3
         </div>
-        <div class="slide">
-          Slide 4
-        </div>
       </div>
     </div>
     <a class="prev control"></a>
     <a class="next control"></a>
+    <div class="dots"></div>
   </div>
   <!-- End-Slide-2 -->
 
@@ -85,6 +84,7 @@
     </div>
     <a class="prev control"></a>
     <a class="next control"></a>
+    <div class="dots"></div>
   </div>
   <!-- End-Slide-3 -->
 
@@ -112,28 +112,31 @@
     </div>
     <a class="prev control"></a>
     <a class="next control"></a>
+    <div class="dots"></div>
   </div>
   <!-- End-Slide-4 -->
 
 <script src="scripts.js"></script>
 
 <script>
-  const mis_slides = [
+const mis_slides = [
   // Slide-1
   {
     id_sliders: "slider1",
     num_sliders: 3,
     animacion: false,
     tiempo_slide: 5000,
-    velocidad_slide: .6
+    velocidad_slide: .6,
+    dots: true
   },
   // Slide-2
   {
     id_sliders: "slider2",
     num_sliders: 2,
-    animacion: false,
+    animacion: true,
     tiempo_slide: 5000,
-    velocidad_slide: .6
+    velocidad_slide: .6,
+    dots: true
   },
   // Slide-3
   {
@@ -141,7 +144,8 @@
     num_sliders: null,
     animacion: null,
     tiempo_slide: null,
-    velocidad_slide: 1
+    velocidad_slide: 1,
+    dots: true
   },
   // Slide-4
   {
@@ -149,7 +153,8 @@
     num_sliders: 4,
     animacion: false,
     tiempo_slide: null,
-    velocidad_slide: null
+    velocidad_slide: null,
+    dots: true
   },
 ]
 

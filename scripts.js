@@ -1,12 +1,13 @@
 class Sliders {
   
-  constructor({id_sliders, num_sliders, animacion, tiempo_slide, velocidad_slide}){
+  constructor({id_sliders, num_sliders, animacion, tiempo_slide, velocidad_slide, dots}){
     // Ajustes
     this.id_sliders = document.getElementById(id_sliders);
     this.num_sliders = num_sliders || 1;
     this.animacion = animacion || false;
     this.tiempo_slide = tiempo_slide || 5000;
     this.velocidad_slide = velocidad_slide || .6;
+    this.dots = dots || false;
   };
 
   slideOn(){
@@ -22,6 +23,9 @@ class Sliders {
     let animacionSlide = this.animacion;
     let velocidadSlide = this.velocidad_slide;
     let tiempoSlide = this.tiempo_slide;
+    let dots = this.dots;
+    
+    let $dot = this.id_sliders.querySelector(".dots");
 
     // Ancho slide
     for (var i = 0; i < slideSolo.length; i++) {
@@ -41,6 +45,15 @@ class Sliders {
     slideResponsive(x);
     x.addListener(slideResponsive);
 
+     // Dots
+     if (dots === true) {
+       for (let i = 0; i < slideSolo.length; i++) {
+        let $newDot = document.createElement("div");
+        $newDot.classList.add('dot');
+        $dot.insertBefore($newDot, $dot.firstElementChild);
+      }
+     }
+
     function slide() {
       let posX1 = 0,
           posX2 = 0,
@@ -55,7 +68,10 @@ class Sliders {
 
           firstSlide = slides[0],
           lastSlide = slides[slidesLength - 1],
-          cloneLast = lastSlide.cloneNode(true);
+          cloneLast = lastSlide.cloneNode(true),
+
+          ind = 0,
+          dot = idSliders.querySelectorAll(`.dot`);
 
       // clonar
       for (let i = 0; i < slides.length; i++) {
@@ -66,6 +82,9 @@ class Sliders {
       sliderItems.insertBefore(cloneLast, firstSlide);
 
       sliderItems.style.left = `-${slideSize}px`;
+      if (dots === true) {  
+        dot[0].classList.add("active");
+      }
 
       // evetos muose
       sliderItems.onmousedown = dragStart;
@@ -78,6 +97,7 @@ class Sliders {
       // eventos click
       prev.addEventListener('click', function () { shiftSlide(-1); });
       next.addEventListener('click', function () {  shiftSlide(1); });
+      document.addEventListener("click", function(e) { dotActive(e); });
 
       // animacion
       if (animacionSlide === true) {
@@ -133,19 +153,23 @@ class Sliders {
       function shiftSlide(dir, action) {
         sliderItems.classList.add('shifting');
         sliderItems.style.transition = `left ${velocidadSlide}s ease-out`;
-    
+
         if (allowShift) {
           if (!action) { posInitial = sliderItems.offsetLeft; }
     
           if (dir == 1) {
             sliderItems.style.left = (posInitial - slideSize) + "px";
             index++;
+            dot.forEach((el, i) => {dot[i].classList.remove("active"); });
+            try { dot[index].classList.add("active"); } catch (error) {}
           } else if (dir == -1) {
             sliderItems.style.left = (posInitial + slideSize) + "px";
             index--;
+            dot.forEach((el, i) => {dot[i].classList.remove("active"); });
+            try { dot[index].classList.add("active"); } catch (error) {}
           }
         };
-    
+
         allowShift = false;
       }
 
@@ -156,14 +180,46 @@ class Sliders {
         if (index == -1) {
           sliderItems.style.left = -(slidesLength * slideSize) + "px";
           index = slidesLength - 1;
+          dot[slidesLength - 1].classList.add("active");
         }
     
         if (index == slidesLength) {
           sliderItems.style.left = -(1 * slideSize) + "px";
           index = 0;
+          dot[0].classList.add("active");
         }
     
         allowShift = true;
+      }
+
+      function dotActive(e) {
+        if (dots === true) {   
+          for (let inde = 0; inde < dot.length; inde++) {
+            if (e.target === dot[inde]) {
+              dot.forEach((el, i) => { /*slides[i].classList.remove("active");*/ dot[i].classList.remove("active"); });
+              // console.log(inde);
+              // slides[inde].classList.add("active");
+              dot[inde].classList.add("active");
+              
+              let posInitialx = slideSolo[0].offsetWidth;
+              
+              sliderItems.classList.add('shifting');
+              sliderItems.style.left = `-${posInitialx * (inde + 1)}px`;
+              sliderItems.style.transition = `left ${velocidadSlide}s ease-out`;
+              index = inde;
+
+              setTimeout(() => {
+                sliderItems.classList.remove('shifting');
+                sliderItems.style.transition = `initial`;
+              }, tiempoSlide);
+
+              // console.log(sliderItems.offsetLeft);
+              
+  
+              ind = inde;
+            }
+          }
+        }
       }
 
     }
