@@ -207,7 +207,7 @@ class Sliders {
               sliderItems.style.transition = `left ${velocidadSlide}s ease-out`;
               index = inde;
 
-                sliderItems.classList.remove('shifting');
+              sliderItems.classList.remove('shifting');
   
               ind = inde;
 
