@@ -1,6 +1,6 @@
 class Sliders {
   
-  constructor({id_sliders, num_sliders, animacion, tiempo_slide, velocidad_slide, dots}){
+  constructor({id_sliders, num_sliders, animacion, tiempo_slide, velocidad_slide, dots, flechas}){
     // Ajustes
     this.id_sliders = document.getElementById(id_sliders);
     this.num_sliders = num_sliders || 1;
@@ -8,6 +8,7 @@ class Sliders {
     this.tiempo_slide = tiempo_slide || 5000;
     this.velocidad_slide = velocidad_slide || .6;
     this.dots = dots || false;
+    this.flechas = flechas || false;
   };
 
   slideOn(){
@@ -24,8 +25,10 @@ class Sliders {
     let velocidadSlide = this.velocidad_slide;
     let tiempoSlide = this.tiempo_slide;
     let dots = this.dots;
+    let flechas = this.flechas;
     
     let $dot = this.id_sliders.querySelector(".dots");
+    let $flechas = idSliders.querySelectorAll(`.control`);
 
     // Ancho slide
     for (var i = 0; i < slideSolo.length; i++) {
@@ -45,14 +48,17 @@ class Sliders {
     slideResponsive(x);
     x.addListener(slideResponsive);
 
-     // Dots
-     if (dots === true) {
-       for (let i = 0; i < slideSolo.length; i++) {
-        let $newDot = document.createElement("div");
-        $newDot.classList.add('dot');
-        $dot.insertBefore($newDot, $dot.firstElementChild);
-      }
-     }
+    // Agregar Dots
+    if (dots === true) {
+      for (let i = 0; i < slideSolo.length; i++) {
+      let $newDot = document.createElement("div");
+      $newDot.classList.add('dot');
+      $dot.insertBefore($newDot, $dot.firstElementChild);
+    }
+    }
+
+    // Agregar Flechas
+    if (flechas === false) {  $flechas.forEach(el => { el.style.display = "none"; }); }
 
     function slide() {
       let posX1 = 0,
@@ -159,7 +165,6 @@ class Sliders {
     
           if (dir == 1) {
             sliderItems.style.left = (posInitial - slideSize) + "px";
-            console.log('tst');
             index++;
             dot.forEach((el, i) => {dot[i].classList.remove("active"); });
             try { dot[index].classList.add("active"); } catch (error) {}
