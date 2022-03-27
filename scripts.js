@@ -159,6 +159,7 @@ class Sliders {
     
           if (dir == 1) {
             sliderItems.style.left = (posInitial - slideSize) + "px";
+            console.log('tst');
             index++;
             dot.forEach((el, i) => {dot[i].classList.remove("active"); });
             try { dot[index].classList.add("active"); } catch (error) {}
@@ -206,12 +207,10 @@ class Sliders {
               sliderItems.style.transition = `left ${velocidadSlide}s ease-out`;
               index = inde;
 
-              setTimeout(() => {
-                sliderItems.classList.remove('shifting');
-                sliderItems.style.transition = `initial`;
-              }, tiempoSlide);
+              sliderItems.classList.remove('shifting');
   
               ind = inde;
+
             }
           }
         }
