@@ -92,3 +92,22 @@ body {
 .next:active {
   transform: scale(.8);
 }
+
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.dot {
+  cursor: pointer;
+  background: #eeeeee;
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  margin: 0 5px;
+}
+
+.dot.active {
+  background: #FFCF47;
+}
