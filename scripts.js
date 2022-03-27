@@ -197,8 +197,6 @@ class Sliders {
           for (let inde = 0; inde < dot.length; inde++) {
             if (e.target === dot[inde]) {
               dot.forEach((el, i) => { /*slides[i].classList.remove("active");*/ dot[i].classList.remove("active"); });
-              // console.log(inde);
-              // slides[inde].classList.add("active");
               dot[inde].classList.add("active");
               
               let posInitialx = slideSolo[0].offsetWidth;
@@ -212,9 +210,6 @@ class Sliders {
                 sliderItems.classList.remove('shifting');
                 sliderItems.style.transition = `initial`;
               }, tiempoSlide);
-
-              // console.log(sliderItems.offsetLeft);
-              
   
               ind = inde;
             }
