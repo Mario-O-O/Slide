@@ -51,10 +51,10 @@ class Sliders {
     // Agregar Dots
     if (dots === true) {
       for (let i = 0; i < slideSolo.length; i++) {
-      let $newDot = document.createElement("div");
-      $newDot.classList.add('dot');
-      $dot.insertBefore($newDot, $dot.firstElementChild);
-    }
+        let $newDot = document.createElement("div");
+        $newDot.classList.add('dot');
+        $dot.insertBefore($newDot, $dot.firstElementChild);
+      }
     }
 
     // Agregar Flechas
