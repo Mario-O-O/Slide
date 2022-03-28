@@ -1,10 +1,11 @@
 # Slide
 Proyecto para realizar slides
 
-Funcionamiento
+**Funcionamiento**
 -------------------
-1- Colocar estructura y solo modificar el "id" el número de slides:
+**1-** Colocar estructura y solo modificar el "id" el número de slides:
 
+```
 <!-- newSlide -->
   <div id="newSlideId" class="slider">
     <div class="wrapper">
@@ -28,9 +29,9 @@ Funcionamiento
     <div class="dots"></div>
   </div>
  <!-- End-newSlide -->
-  
- 2- Antes del body y después del archivo "scripts.js" crear una etiqueta <script> y colocar las propiedades del slide:
- 
+  ```
+ **2-** Antes del body y después del archivo "scripts.js" crear una etiqueta <script> y colocar las propiedades del slide:
+ ```
  const mis_slides = [
   // Slide-1
   {
@@ -45,4 +46,5 @@ Funcionamiento
 ]
 
 mis_slides.forEach(e => { new Sliders(e).slideOn() }); //<-- activa el slide
+```
 -------------------
