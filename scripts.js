@@ -186,13 +186,13 @@ class Sliders {
         if (index == -1) {
           sliderItems.style.left = -(slidesLength * slideSize) + "px";
           index = slidesLength - 1;
-          dot[slidesLength - 1].classList.add("active");
+          try { dot[slidesLength - 1].classList.add("active"); } catch (error) {}
         }
     
         if (index == slidesLength) {
           sliderItems.style.left = -(1 * slideSize) + "px";
           index = 0;
-          dot[0].classList.add("active");
+          try { dot[0].classList.add("active"); } catch (error) {}
         }
     
         allowShift = true;
