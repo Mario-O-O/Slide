@@ -1,10 +1,11 @@
 class Sliders {
   
-  constructor({id_sliders, num_sliders, animacion, tiempo_slide, velocidad_slide, dots, flechas}){
+  constructor({id_sliders, num_sliders, animacion, tipo_animacion, tiempo_slide, velocidad_slide, dots, flechas}){
     // Ajustes
     this.id_sliders = document.getElementById(id_sliders);
     this.num_sliders = num_sliders || 1;
     this.animacion = animacion || false;
+    this.tipo_animacion = tipo_animacion || 'linear';
     this.tiempo_slide = tiempo_slide || 5000;
     this.velocidad_slide = velocidad_slide || .6;
     this.dots = dots || false;
@@ -22,6 +23,7 @@ class Sliders {
     let next = this.id_sliders.querySelector('.next');
 
     let animacionSlide = this.animacion;
+    let tipoAnimacion = this.tipo_animacion;
     let velocidadSlide = this.velocidad_slide;
     let tiempoSlide = this.tiempo_slide;
     let dots = this.dots;
@@ -158,7 +160,7 @@ class Sliders {
 
       function shiftSlide(dir, action) {
         sliderItems.classList.add('shifting');
-        sliderItems.style.transition = `left ${velocidadSlide}s ease-out`;
+        sliderItems.style.transition = `left ${velocidadSlide}s ${tipoAnimacion}`;
 
         if (allowShift) {
           if (!action) { posInitial = sliderItems.offsetLeft; }
@@ -209,7 +211,7 @@ class Sliders {
               
               sliderItems.classList.add('shifting');
               sliderItems.style.left = `-${posInitialx * (inde + 1)}px`;
-              sliderItems.style.transition = `left ${velocidadSlide}s ease-out`;
+              sliderItems.style.transition = `left ${velocidadSlide}s ${tipoAnimacion}`;
               index = inde;
 
               sliderItems.classList.remove('shifting');
