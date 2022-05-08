@@ -38,6 +38,7 @@ Proyecto para realizar slides
     id_sliders: "newSlideId", //<-- id del slide
     num_sliders: 1, //<-- Número de slides que aparecen en pantalla
     animacion: true, //<-- Activa la animación del slide (true o false)
+    tipo_animacion: "ease-out", //<-- Parametro para cambiar el tipo de animación ("ease-out", "linear, etc...")
     tiempo_slide: 5000, //<-- Tiempo en que cambia de un slide a otro (para la velocidad de animación)
     velocidad_slide: .6, //<-- Velocidad en que se traslada de un slide a otro (en segundos)
     dots: true, //<-- Activa los dots (true o false)
